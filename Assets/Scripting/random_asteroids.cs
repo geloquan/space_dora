@@ -5,8 +5,6 @@ using UnityEngine;
 public class random_asteroids : MonoBehaviour
 {
     
-    public int asteroidWidth = 1; // Set the width of the asteroid
-    public int asteroidHeight = 1;
     private int asteroid_count = 40;
     void Start() {
         for (int i = 0; i < asteroid_count; i++) {
