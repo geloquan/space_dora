@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
+using Newtonsoft.Json.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlanetObject : MonoBehaviour {
@@ -10,20 +13,21 @@ public class PlanetObject : MonoBehaviour {
     private float cell_pos_y;
 
     private int reward;
-    private bool is_visited;    
+    private bool is_visited;
 
-    public void Place(float x, float y) {
+    public SpriteRenderer spriteRenderer;
+    private GameObject new_planet;
+    private Bounds boundsSpaceObject;
 
+    public void Visit() {
+        is_visited = true;
     }
-
     public int GetId() {
         return id;
     }
-
-    private void Awake() {
-        id = nextId;
-        nextId++;
+    private void Start() {
     }
+
 
     // UniqueObject[] objects = FindObjectsOfType<UniqueObject>();
     // 

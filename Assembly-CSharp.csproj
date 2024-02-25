@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripting\GridManager.cs" />
     <Compile Include="Assets\Scripting\PlanetObject.cs" />
     <Compile Include="Assets\Scripting\PlayerController.cs" />
+    <Compile Include="Assets\Scripting\PlanetOrg.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
