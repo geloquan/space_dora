@@ -133,6 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 59421476}
   - component: {fileID: 59421475}
+  - component: {fileID: 59421477}
+  - component: {fileID: 59421478}
+  - component: {fileID: 59421479}
   m_Layer: 0
   m_Name: ship_1
   m_TagString: Untagged
@@ -207,6 +210,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &59421477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59421474}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d8cc5ffc90549c4e8a19e45c5287701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &59421478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59421474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a1b987e1a9e7f48881e9b98f143d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  transform_: {fileID: 0}
+  current_position: {x: 0, y: 0, z: 0}
+--- !u!114 &59421479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59421474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a9bd54a85529240bcb9544430ec988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &116256244
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +566,7 @@ GameObject:
   - component: {fileID: 667628308}
   - component: {fileID: 667628307}
   - component: {fileID: 667628306}
+  - component: {fileID: 667628309}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -597,3 +640,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &667628309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667628305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efc6474c5655e343b8847fcc42d7c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  instSpaceObjectSpriteRenderer: {fileID: 0}
+  target: {fileID: 0}
+  minX: 0
+  minY: 0
+  maxX: 0
+  maxY: 0

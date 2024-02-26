@@ -1,32 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
-public class MainCamera : MonoBehaviour
-{
+public class MainCamera : MonoBehaviour {
     private SpaceObject instSpaceObject;
+    private PlayerObject instPlayerObject;
     public SpriteRenderer spriteRenderer;
+    public SpriteRenderer instSpaceObjectSpriteRenderer;
+    public Transform target;
+    public float minX;
+    public float minY;
+    public float maxX;
+    public float maxY;
 
-    void Start()
-    {
-    //    instSpaceObject = GetComponent<SpaceObject>();
-    //    Bounds spriteBounds = spriteRenderer.bounds;
-    //    int grid_count = instSpaceObject.grid_count;
-    //
-    //    Vector3 cellSize = grid.cellSize;
-    //    float grid = grid_count;
-    //
-    //    float minX = -(instSpaceObject.spriteRenderer.localScale.x / 2) + (Camera.main.orthographicSize * 2);
-    //    float minY = -instSpaceObject.spriteRenderer.localScale.y / 2 + (Camera.main.orthographicSize * 2 * Camera.main.aspect);
-    //    float maxX = instSpaceObject.spriteRenderer.localScale.x / 2 - (Camera.main.orthographicSize * 2);
-    //    float maxY = instSpaceObject.spriteRenderer.localScale.y / 2 - (Camera.main.orthographicSize * 2 * Camera.main.aspect);
-
+    void Start() {
+        instSpaceObject = FindObjectOfType<SpaceObject>();
+        instSpaceObjectSpriteRenderer = instSpaceObject.GetComponent<SpriteRenderer>();
+        instPlayerObject = FindObjectOfType<PlayerObject>();
+        target = FindObjectOfType<PlayerObject>().transform;
+        Transform transform = GetComponent<Transform>();
+        minX = -(instSpaceObjectSpriteRenderer.localBounds.size.x / 2) + (Camera.main.orthographicSize * 2);
+        minY = -instSpaceObjectSpriteRenderer.localBounds.size.x / 2 + (Camera.main.orthographicSize * 2 * Camera.main.aspect);
+        maxX = instSpaceObjectSpriteRenderer.localBounds.size.y / 2 - (Camera.main.orthographicSize * 2);
+        maxY = instSpaceObjectSpriteRenderer.localBounds.size.y / 2 - (Camera.main.orthographicSize * 2 * Camera.main.aspect);
 
     }
+    void Update() {
+        Vector3 direction = target.position - transform.position;
+        transform.position += direction * 5f * Time.deltaTime;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
+
     }
 }
