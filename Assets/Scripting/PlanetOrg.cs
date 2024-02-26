@@ -6,7 +6,7 @@ public class PlanetOrg : MonoBehaviour {
 
     private Bounds boundsSpaceObject;
 
-    public void NewPlanet() {
+    public Vector3 NewPlanet() {
         GameObject new_planet = new GameObject("Planet");
 
         boundsSpaceObject = FindObjectOfType<SpaceObject>().bounds;
@@ -27,8 +27,10 @@ public class PlanetOrg : MonoBehaviour {
         float randomX = Random.Range(space_minX, space_maxX);
         float randomY = Random.Range(space_minY, space_maxY);
         new_planet.transform.parent = FindObjectOfType<SpaceObject>().transform;
+        Vector3 new_position = new Vector3(randomX, randomY, -1f);
+        new_planet.transform.position = new_position;
 
-        new_planet.transform.position = new Vector3(randomX, randomY, -1f);
+        return new_position;
     }
 
     void Start() {

@@ -27,6 +27,9 @@ public class PlanetObject : MonoBehaviour {
     }
     private void Start() {
     }
+    private void Awake() {
+        id = nextId++;
+    }
 
 
     // UniqueObject[] objects = FindObjectsOfType<UniqueObject>();
