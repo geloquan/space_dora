@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpaceObject : MonoBehaviour {  
-
+public class SpaceObject : MonoBehaviour {
+    public float gridSize = 1000000f;
     public Bounds bounds;
     public SpriteRenderer spriteRenderer;
     public int planet_count;
@@ -24,6 +24,8 @@ public class SpaceObject : MonoBehaviour {
     public Bounds boundsSpaceObject;
 
     public List<Vector3> planetPositions;
+    public List<List<Vector3>> planetGridPositions;
+
 
 
     private void Start() {
@@ -36,7 +38,6 @@ public class SpaceObject : MonoBehaviour {
         refPlayerObject = FindObjectOfType<PlayerObject>();
         refPlayerObjectTransform = refPlayerObject.transform;
         refPlayerObjectGrid = refPlayerObject.GetComponent<Grid>();
-        refPlayerObjectGridPosition = grid.WorldToCell(refPlayerObjectTransform.position);
 
 
         minX = bounds.min.x; minY = bounds.min.y; maxX = bounds.max.x; maxY = bounds.max.y;
@@ -50,9 +51,7 @@ public class SpaceObject : MonoBehaviour {
 
     }
     void Update() {
-        refPlayerObjectTransform = refPlayerObject.transform;
-        refPlayerObjectGrid = refPlayerObject.GetComponent<Grid>();
-        refPlayerObjectGridPosition = grid.WorldToCell(refPlayerObjectTransform.position);
+        refPlayerObjectGridPosition = grid.WorldToCell(refPlayerObject.transform.position);
         Debug.Log($"PlayerObject is in grid cell X: {refPlayerObjectGridPosition.x}, Y: {refPlayerObjectGridPosition.y}");
     }
     public void HoveringAt(Vector3 playerPosition) {
@@ -75,4 +74,15 @@ public class SpaceObject : MonoBehaviour {
 
         return cellsInX * cellsInY;
     }
+    public Vector3 MoveSpriteByGrid(Vector3 currentPlayerPosition, Vector2 input) {
+
+        float x = Mathf.Round(currentPlayerPosition.x / gridSize) * gridSize;
+        float y = Mathf.Round(currentPlayerPosition.y / gridSize) * gridSize;
+
+        x += input.x * gridSize;
+        y += input.y * gridSize;
+
+        return new Vector3(x, y, currentPlayerPosition.z);
+    }
+
 }
