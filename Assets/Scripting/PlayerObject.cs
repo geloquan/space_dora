@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerObject : MonoBehaviour {
     private SpaceObject instSpaceObject;
     public SpriteRenderer spriteRenderer;
-    public float moveSpeed = 1.0f;
 
     public Transform transform_;
     public Vector3 current_position;
@@ -16,7 +15,7 @@ public class PlayerObject : MonoBehaviour {
     public float maxY;
     public float clampedX;
     public float clampedY;
-    public float movementSpeed = 1f;
+    public float movementSpeed = 4f;
 
     public bool is_visited;
     public int grid_distance_from_base;

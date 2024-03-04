@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PlayerController : MonoBehaviour {
     private float horizontalInput;
@@ -10,13 +12,26 @@ public class PlayerController : MonoBehaviour {
     private float moveSpeed = 5f;
     private bool is_moving;
     private Vector2 input;
-    private Animator animator;
+    private Animator animator;  
     private PlayerObject instPlayerObject;
+
+    private float playerObjectMinX;
+    private float playerObjectMaxX;
+    private float playerObjectMinY;
+    private float playerObjectMaxY;
+
+    private float playerObjectClampX;
+    private float playerObjectClampY;
+
     private void Awake() {
         animator = GetComponent<Animator>();
     }
     void Start() {
         instPlayerObject = FindObjectOfType<PlayerObject>();
+        playerObjectMinX = instPlayerObject.minX;
+        playerObjectMaxX = instPlayerObject.maxX;
+        playerObjectMinY = instPlayerObject.minY;
+        playerObjectMaxY = instPlayerObject.maxY;
     }
 
     void Update() {
@@ -44,7 +59,10 @@ public class PlayerController : MonoBehaviour {
     IEnumerator Move(Vector3 target_position) {
         is_moving = true;
         while ((target_position - transform.position).sqrMagnitude > Mathf.Epsilon) {
-            transform.position = Vector3.MoveTowards(transform.position, target_position, moveSpeed * Time.deltaTime);
+            playerObjectClampX = Mathf.Clamp(transform.position.x, playerObjectMinX, playerObjectMaxX);
+            playerObjectClampY = Mathf.Clamp(transform.position.y, playerObjectMinX, playerObjectMaxX);
+            Vector3 move_to = new Vector3(playerObjectClampX, playerObjectClampY, 0f);
+            transform.position = Vector3.MoveTowards(move_to, target_position, moveSpeed * Time.deltaTime);
             yield return null;
         }
         transform.position = target_position;
